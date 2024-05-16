@@ -36,17 +36,36 @@ public class HydraHandler implements Listener {
             world.playSound(entity.getLocation(), Sound.ENTITY_WITHER_SPAWN, 3.0f, 1.0f);
             world.spawnParticle(Particle.ENCHANTMENT_TABLE, deathSite.add(0,1,0), 100);
 
+            EntitySnapshot snapshot = entity.createSnapshot();
+            EntityType type = entity.getType();
 
             int toSpawn = random.nextInt(4) + 2;
 
             Vector direction = new Vector(1, 0, 0);
+            direction.rotateAroundY(random.nextDouble() * Math.PI * 2);
+
+            List<Entity> corpses = new ArrayList<>();
+            for (int i = 0; i < toSpawn; i++) {
+                Entity mob = snapshot.createEntity(deathSite);
+                corpses.add(mob);
+                Vector off = direction.rotateAroundY(Math.PI * 2 * i / toSpawn);
+                mob.setVelocity(off);
+            }
+
+            entity.remove();
+
             Bukkit.getScheduler().runTaskLater(this._plugin, () -> {
-                direction.rotateAroundY(random.nextDouble() * Math.PI * 2);
-                for (int i = 0; i < toSpawn; i++) {
-                    Entity mob = world.spawnEntity(deathSite, entity.getType());
-                    Vector off = direction.rotateAroundY(Math.PI * 2 * i / toSpawn);
-                    mob.setVelocity(off);
+                List<Location> locations = new ArrayList<>();
+                for (Entity corpse : corpses){
+                    world.spawnParticle(Particle.ENCHANTMENT_TABLE, corpse.getLocation().add(0,1,0), 100);
+                    locations.add(corpse.getLocation());
+                    corpse.remove();
                 }
+                Bukkit.getScheduler().runTaskLater(this._plugin, () -> {
+                    for (Location location : locations){
+                        world.spawnEntity(location, type);
+                    }
+                }, 20);
             }, 20);
         }
     }

@@ -32,6 +32,7 @@ public class ButterFingerHandler implements Listener {
         Integer task_id = Bukkit.getScheduler().scheduleSyncRepeatingTask(this._plugin, () -> {
             PlayerInventory inventory = player.getInventory();
             if (inventory.getItemInMainHand().getAmount() == 0) return;
+            if (this.random.nextInt(100) != 0 ) return;
 
             player.sendMessage("Looks like you've got butter fingers ;)");
             player.dropItem(true);
