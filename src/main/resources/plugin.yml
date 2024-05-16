@@ -1,0 +1,4 @@
+name: Gregcraft2
+version: '${project.version}'
+main: gregcraft2.gregcraft2.Gregcraft2
+api-version: 1.20
