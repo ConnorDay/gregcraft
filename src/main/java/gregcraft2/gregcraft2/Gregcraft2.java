@@ -31,6 +31,9 @@ public final class Gregcraft2 extends JavaPlugin {
         //TODO: regenerate world command
         //TODO: hub area
         //TODO: troll command
+
+        //KYle:
+        new PokieMaineHandler(this);
     }
 
     @Override
