@@ -40,7 +40,8 @@ public final class Gregcraft2 extends JavaPlugin {
         //TODO: hub area
         new HubHandler(this);
         //TODO: troll command
-
+        //KYle:
+        new PokieMaineHandler(this);
 
         //Commands
         new TestCommand(this);
