@@ -23,7 +23,6 @@ public final class Gregcraft2 extends JavaPlugin {
         new PortalHandler(this);
         new StoneHandler(this);
         //TODO: Forget how to swim
-        //TODO: big snowball to snowball fight
         //TODO: Skywars
         //TODO: Random trivia (with secret answers and shaming)
         //TODO: Leaderboard (for run or overall?)
@@ -34,6 +33,7 @@ public final class Gregcraft2 extends JavaPlugin {
 
         //KYle:
         new PokieMaineHandler(this);
+        new SnowballsHandler(this);
     }
 
     @Override
