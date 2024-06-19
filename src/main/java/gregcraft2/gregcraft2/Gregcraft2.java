@@ -41,8 +41,8 @@ public final class Gregcraft2 extends JavaPlugin {
         //TODO: troll command
         //KYle:
         new PokieMaineHandler(this);
-
-        new SnowballsHandler(this);
+        new WorkTheFireHandler(this);
+        //new SnowballsHandler(this);
 
         //Commands
         new TestCommand(this);

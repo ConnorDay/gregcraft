@@ -35,18 +35,19 @@ public class SnowballsHandler implements Listener {
                 int direction = dice.nextInt(3);
                 if(direction == 0){
                     Entity projectile11 = player69.getWorld().spawnEntity(player69.getLocation().add(10, 1.5 ,0), EntityType.SNOWBALL);
-                    projectile11.setVelocity(new Vector(-1.5, 0, 0));
+                    projectile11.setVelocity(new Vector(-.5, 0, 0));
                     projectile11.setGravity(false);
+                    projectile11.remove();
                 }
                 else if(direction == 1){
                     Bukkit.broadcastMessage("fegliy");
                     Entity projectile12 = player69.getWorld().spawnEntity(player69.getLocation().add(0, 10 ,0), EntityType.SNOWBALL);
-                    projectile12.setVelocity(new Vector(0, -1.5, 0));
+                    projectile12.setVelocity(new Vector(0, -.5, 0));
                     projectile12.setGravity(false);
                 }
                 else if(direction == 2) {
                     Entity projectile11 = player69.getWorld().spawnEntity(player69.getLocation().add(0, 1.5, 10), EntityType.SNOWBALL);
-                    projectile11.setVelocity(new Vector(0, 0, -1.5));
+                    projectile11.setVelocity(new Vector(0, 0, -.5));
                     projectile11.setGravity(false);
                 }
             }
